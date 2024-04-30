@@ -20,8 +20,8 @@ public class Player extends Entity{
         this.keyHandler = keyHandler;
 
         solidArea = new Rectangle();
-        solidArea.x = 8;
-        solidArea.y = 16;
+        solidArea.x = 9;
+        solidArea.y = 18;
         solidArea.width = 32;
         solidArea.height = 32;
 
@@ -30,8 +30,8 @@ public class Player extends Entity{
     }
     public  void setDefaultValues(){
 
-        worldX = 100;
-        worldY = 100;
+        worldX = 310;
+        worldY = 400;
         speed = 4;
         direction = "down";
 
@@ -75,14 +75,13 @@ public class Player extends Entity{
             collisionOn = false;
             gamePanel.collisionChecker.checkTile(this);
 
-            if(collisionOn == false){
+            if(!collisionOn){
                 switch (direction){
-                    case "up": worldY -= speed;break;
-                    case "down": worldY += speed;break;
+                    case "up": worldY -= speed; break;
+                    case "down": worldY += speed; break;
                     case "left": worldX -= speed; break;
                     case "right": worldX += speed; break;
                 }
-
             }
 
             spriteCounter++;
