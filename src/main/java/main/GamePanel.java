@@ -13,17 +13,17 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable{
 
     //screen
-    final int originTileSize = 16;
+    final int originTileSize = 25;
     final int scale = 3;
     public final int tileSize = originTileSize * scale;
-    public final int maxScreenCol = 16;
-    public final int maxScreenRow = 12;
+    public final int maxScreenCol = 10;
+    public final int maxScreenRow = 10;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
     //World
-    public final int maxWorldCol = 50;
-    public final int maxWorldRow = 50;
+    public final int maxWorldCol = 10;
+    public final int maxWorldRow = 10;
     public final int worldWidth = tileSize * maxWorldCol;
     public final int maxWorldHeight = tileSize * maxWorldRow;
 

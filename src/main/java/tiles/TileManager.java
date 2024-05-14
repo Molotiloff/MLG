@@ -21,23 +21,23 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
         getTileImage();
-        loadMap("/maps/world01.txt");
+        loadMap("/maps/labirinth.txt");
     }
     public void getTileImage(){
         try{
             tile[0] = new Tile();
-            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tile/grass.png"));
+            tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tile/floor.png"));
 
             tile[1] = new Tile();
-            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tile/wall.png"));
+            tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tile/wall1.png"));
             tile[1].collision = true;
 
             tile[2] = new Tile();
-            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tile/water.png"));
+            tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tile/wall2.png"));
             tile[2].collision = true;
 
             tile[3] = new Tile();
-            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tile/earth.png"));
+            tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tile/simplified_cup.png"));
 
             tile[4] = new Tile();
             tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tile/sand.png"));
