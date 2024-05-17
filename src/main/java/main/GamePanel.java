@@ -1,6 +1,7 @@
 package main;
 
 import entity.Player;
+import entity.Player2;
 import tiles.TileManager;
 
 import java.awt.*;
@@ -31,10 +32,12 @@ public class GamePanel extends JPanel implements Runnable{
     //Sys
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
+    KeyHandler2 keyHandler2 = new KeyHandler2();
     Thread gameTread;
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     //Objects
     Player player = new Player(this, keyHandler);
+    Player2 player2 = new Player2(this, keyHandler2);
 
     //States
     public int gameState;
@@ -47,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable{
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);
         this.addKeyListener(keyHandler);
+        this.addKeyListener(keyHandler2);
         this.setFocusable(true);
 
     }
@@ -91,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable{
     public void update(){
 
         player.update();
+        player2.update();
     }
     public void paintComponent(Graphics g){
 
@@ -100,6 +105,7 @@ public class GamePanel extends JPanel implements Runnable{
 
         tileManager.draw(g2);
         player.draw(g2);
+        player2.draw(g2);
 
         g2.dispose();
     }
