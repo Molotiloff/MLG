@@ -20,18 +20,18 @@ public class Player2 extends Entity{
         this.keyHandler = keyHandler;
 
         solidArea = new Rectangle();
-        solidArea.x = 14;
-        solidArea.y = 5;
-        solidArea.width = 26;
-        solidArea.height = 45;
+        solidArea.x = 15;
+        solidArea.y = 24;
+        solidArea.width = 20;
+        solidArea.height = 26;
 
         setDefaultValues();
         getPlayerImage();
     }
     public  void setDefaultValues(){
 
-        worldX = 600;
-        worldY = 600;
+        worldX = 800;
+        worldY = 800;
         speed = 4;
         direction = "down";
 

@@ -2,6 +2,7 @@ package main;
 
 import entity.Player;
 import entity.Player2;
+import object.SuperObject;
 import tiles.TileManager;
 
 import java.awt.*;
@@ -14,19 +15,18 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel implements Runnable{
 
     //screen
-    final int originTileSize = 25;
+    final int originTileSize = 15;
     final int scale = 3;
     public final int tileSize = originTileSize * scale;
-    public final int maxScreenCol = 10;
-    public final int maxScreenRow = 10;
+    public final int maxScreenCol = 21;
+    public final int maxScreenRow = 21;
     final int screenWidth = tileSize * maxScreenCol;
     final int screenHeight = tileSize * maxScreenRow;
 
     //World
-    public final int maxWorldCol = 10;
-    public final int maxWorldRow = 10;
-    public final int worldWidth = tileSize * maxWorldCol;
-    public final int maxWorldHeight = tileSize * maxWorldRow;
+    public final int maxWorldCol = 21;
+    public final int maxWorldRow = 21;
+
 
     int FPS = 60;
     //Sys
@@ -38,6 +38,9 @@ public class GamePanel extends JPanel implements Runnable{
     //Objects
     Player player = new Player(this, keyHandler);
     Player2 player2 = new Player2(this, keyHandler2);
+
+    //inventory
+    public SuperObject obj[] = new SuperObject[10];
 
     //States
     public int gameState;

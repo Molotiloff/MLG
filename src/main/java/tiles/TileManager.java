@@ -21,7 +21,7 @@ public class TileManager {
         tile = new Tile[10];
         mapTileNum = new int[gamePanel.maxWorldCol][gamePanel.maxWorldRow];
         getTileImage();
-        loadMap("/maps/labirinth.txt");
+        loadMap("/maps/labi.txt");
     }
     public void getTileImage(){
         try{
