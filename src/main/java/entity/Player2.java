@@ -13,6 +13,7 @@ public class Player2 extends Entity{
 
     GamePanel gamePanel;
     KeyHandler2 keyHandler;
+    public static boolean isNearTrofy;
 
     public Player2(GamePanel gamePanel, KeyHandler2 keyHandler){
 
@@ -26,6 +27,8 @@ public class Player2 extends Entity{
         solidAreaDefaultY = solidArea.y;
         solidArea.width = 20;
         solidArea.height = 26;
+        boolean isNeartrofy = false;
+
 
         setDefaultValues();
         getPlayerImage();
@@ -131,6 +134,7 @@ public class Player2 extends Entity{
                     if (gamePanel.hasGoldKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasGoldKey--;
+                        gamePanel.keys--;
                     }
                     else {
                         gamePanel.ui.showMessage("You need a gold key");
@@ -140,6 +144,7 @@ public class Player2 extends Entity{
                     if (gamePanel.hasPurpleKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasPurpleKey--;
+                        gamePanel.keys--;
                     }
                     else {
                         gamePanel.ui.showMessage("You need a purple key");
@@ -149,11 +154,23 @@ public class Player2 extends Entity{
                     if (gamePanel.hasGreenKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasGreenKey--;
+                        gamePanel.keys--;
                     }
                     else {
                         gamePanel.ui.showMessage("You need a green key");
                     }
                     break;
+                case "trofy":{
+                    isNearTrofy = true;
+                    if(Player.isNearTrofy == true){
+                        //congarts
+                        gamePanel.ui.gameFinished = true;
+                    }
+                    else{
+                        gamePanel.ui.showMessage("You need your mate to take away the Trrofy!!");
+                    }
+                    break;
+                }
             }
         }
     }

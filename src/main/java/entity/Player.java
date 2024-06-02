@@ -13,6 +13,7 @@ public class Player extends Entity{
 
     GamePanel gamePanel;
     KeyHandler keyHandler;
+    static boolean isNearTrofy = false;
 
     public Player(GamePanel gamePanel, KeyHandler keyHandler){
 
@@ -131,6 +132,7 @@ public class Player extends Entity{
                     if (gamePanel.hasGoldKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasGoldKey--;
+                        gamePanel.keys--;
                     }
                     else {
                         gamePanel.ui.showMessage("You need a gold key");
@@ -140,6 +142,7 @@ public class Player extends Entity{
                     if (gamePanel.hasPurpleKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasPurpleKey--;
+                        gamePanel.keys--;
                     }
                     else {
                         gamePanel.ui.showMessage("You need a purple key");
@@ -149,11 +152,23 @@ public class Player extends Entity{
                     if (gamePanel.hasGreenKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasGreenKey--;
+                        gamePanel.keys--;
                     }
                     else {
                         gamePanel.ui.showMessage("You need a green key");
                     }
                     break;
+                case "trofy":{
+                    isNearTrofy = true;
+                    if(Player2.isNearTrofy == true){
+                        //congarts
+                        gamePanel.ui.gameFinished = true;
+                    }
+                    else{
+                        gamePanel.ui.showMessage("You need your mate to take away the Trrofy!!");
+                    }
+                    break;
+                }
             }
         }
     }

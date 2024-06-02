@@ -2,6 +2,7 @@ package main;
 
 import object.Door;
 import object.Key;
+import object.Trofy;
 
 public class AssetSetter {
 
@@ -35,6 +36,10 @@ public class AssetSetter {
         gamepanel.obj[5] = new Door("gold door");
         gamepanel.obj[5].worldX = 8 * gamepanel.tileSize;
         gamepanel.obj[5].worldY = 18 * gamepanel.tileSize;
+
+        gamepanel.obj[6] = new Trofy();
+        gamepanel.obj[6].worldX = 10 * gamepanel.tileSize;
+        gamepanel.obj[6].worldY = 10 * gamepanel.tileSize;
 
     }
 
