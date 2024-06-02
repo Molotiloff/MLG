@@ -1,5 +1,6 @@
 package main;
 
+import object.Door;
 import object.Key;
 
 public class AssetSetter {
@@ -11,13 +12,30 @@ public class AssetSetter {
     }
 
     public void setObject(){
-        gamepanel.obj[0] = new Key();
+        gamepanel.obj[0] = new Key("green");
         gamepanel.obj[0].worldX = 7 * gamepanel.tileSize;
         gamepanel.obj[0].worldY = 14 * gamepanel.tileSize;
 
-        gamepanel.obj[1] = new Key();
-        gamepanel.obj[1].worldX = 15 * gamepanel.tileSize;
-        gamepanel.obj[1].worldY = 2 * gamepanel.tileSize;
+        gamepanel.obj[1] = new Key("gold");
+        gamepanel.obj[1].worldX = 5 * gamepanel.tileSize;
+        gamepanel.obj[1].worldY = 18 * gamepanel.tileSize;
+
+        gamepanel.obj[2] = new Key("purple");
+        gamepanel.obj[2].worldX = 15 * gamepanel.tileSize;
+        gamepanel.obj[2].worldY = 6 * gamepanel.tileSize;
+
+        gamepanel.obj[3] = new Door("green");
+        gamepanel.obj[3].worldX = 8 * gamepanel.tileSize;
+        gamepanel.obj[3].worldY = 10 * gamepanel.tileSize;
+
+        gamepanel.obj[4] = new Door("purple");
+        gamepanel.obj[4].worldX = 16 * gamepanel.tileSize;
+        gamepanel.obj[4].worldY = 10 * gamepanel.tileSize;
+
+        gamepanel.obj[5] = new Door("gold");
+        gamepanel.obj[5].worldX = 8 * gamepanel.tileSize;
+        gamepanel.obj[5].worldY = 18 * gamepanel.tileSize;
+
     }
 
 }
