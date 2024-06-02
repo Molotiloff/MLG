@@ -41,6 +41,9 @@ public class GamePanel extends JPanel implements Runnable{
 
     //inventory
     public SuperObject obj[] = new SuperObject[10];
+    public int hasPurpleKey = 0;
+    public int hasGreenKey = 0;
+    public int hasGoldKey = 0;
 
     //States
     public int gameState;

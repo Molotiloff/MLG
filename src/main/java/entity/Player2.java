@@ -22,6 +22,8 @@ public class Player2 extends Entity{
         solidArea = new Rectangle();
         solidArea.x = 15;
         solidArea.y = 24;
+        solidAreaDefaultX = solidArea.x;
+        solidAreaDefaultY = solidArea.y;
         solidArea.width = 20;
         solidArea.height = 26;
 
@@ -75,6 +77,10 @@ public class Player2 extends Entity{
             collisionOn = false;
             gamePanel.collisionChecker.checkTile(this);
 
+            // check object collision
+            int objIndex = gamePanel.collisionChecker.checkObject(this,true);
+            pickUpObject(objIndex);
+
             if(!collisionOn){
                 switch (direction){
                     case "up": worldY -= speed; break;
@@ -96,6 +102,45 @@ public class Player2 extends Entity{
             }
         }
 
+    }
+
+    public void pickUpObject(int i) {
+        if (i != 9999) {
+            String objectName = gamePanel.obj[i].flag;
+
+            switch (objectName) {
+                case "gold key":
+                    gamePanel.hasGoldKey++;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "green key":
+                    gamePanel.hasGreenKey++;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "purple key":
+                    gamePanel.hasPurpleKey++;
+                    gamePanel.obj[i] = null;
+                    break;
+                case "gold door":
+                    if (gamePanel.hasGoldKey > 0) {
+                        gamePanel.obj[i] = null;
+                        gamePanel.hasGoldKey--;
+                    }
+                    break;
+                case "purple door":
+                    if (gamePanel.hasPurpleKey > 0) {
+                        gamePanel.obj[i] = null;
+                        gamePanel.hasPurpleKey--;
+                    }
+                    break;
+                case "green door":
+                    if (gamePanel.hasGreenKey > 0) {
+                        gamePanel.obj[i] = null;
+                        gamePanel.hasGreenKey--;
+                    }
+                    break;
+            }
+        }
     }
 
     public void draw(Graphics2D g2){

@@ -12,6 +12,12 @@ public class SuperObject {
     public String name;
     public boolean collision = false;
     public int worldX, worldY;
+    public Rectangle solidArea = new Rectangle(0,0,48,48);
+    public int solidAreaDefaultX = 0;
+    public int solidAreaDefaultY = 0;
+    public String objType;
+    public String flag;
+
 
     public void draw(Graphics2D g2, GamePanel gamePanel) {
         for (int i = 0; i < gamePanel.obj.length; i++) {
