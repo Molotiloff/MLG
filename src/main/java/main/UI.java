@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.text.DecimalFormat;
 
 public class UI {
+    Graphics2D g2;
     GamePanel gamePanel;
     Font arial_40;
     BufferedImage keyImage;
@@ -45,47 +46,71 @@ public class UI {
         messageOn = true;
     }
 
-    public void draw(Graphics2D g2){
+    public void draw(Graphics2D g2) {
+        this.g2 = g2;
 
-        if(gameFinished){
+        g2.setFont(arial_40);
+        g2.setColor(Color.WHITE);
 
-            String text;
-            int textLenght;
-            int x;
-            int y;
+        if (gamePanel.gameState == gamePanel.playState) {
 
-            text = "Yours time is: " +decimalFormat.format(playTime) + "!";
-            textLenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-            x = gamePanel.screenWidth/2 - textLenght/2;
-            y = gamePanel.screenHeight/2 + (gamePanel.tileSize*4);
-            g2.drawString(text, x, y);
+            if (gameFinished) {
 
-            System.out.println("finish");
-            g2.drawImage(gifImage, gamePanel.tileSize*2,gamePanel.tileSize*3, gamePanel.tileSize, gamePanel.tileSize, null);
+                String text;
+                int textLenght;
+                int x;
+                int y;
 
-        }
-        else {
-            g2.setFont(arial_40);
-            g2.setColor(Color.WHITE);
-            g2.drawImage(keyImage, gamePanel.tileSize/2, gamePanel.tileSize/2, gamePanel.tileSize, gamePanel.tileSize, null);
-            g2.drawString("x "+ gamePanel.keys, 75, 55);
+                text = "Yours time is: " + decimalFormat.format(playTime) + "!";
+                textLenght = (int) g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+                x = gamePanel.screenWidth / 2 - textLenght / 2;
+                y = gamePanel.screenHeight / 2 + (gamePanel.tileSize * 4);
+                g2.drawString(text, x, y);
 
-            //time
-            playTime +=(double)1/60;
-            g2.drawString("Time: "+decimalFormat.format(playTime), gamePanel.tileSize*16, gamePanel.tileSize);
+                System.out.println("finish");
+                g2.drawImage(gifImage, gamePanel.tileSize * 2, gamePanel.tileSize * 3, gamePanel.tileSize, gamePanel.tileSize, null);
 
-            //messages
-            if(messageOn){
-                g2.setFont(g2.getFont().deriveFont(30F));
-                g2.drawString(message, gamePanel.tileSize/2, gamePanel.tileSize*3);
+            } else {
+                g2.setFont(arial_40);
+                g2.setColor(Color.WHITE);
+                g2.drawImage(keyImage, gamePanel.tileSize / 2, gamePanel.tileSize / 2, gamePanel.tileSize, gamePanel.tileSize, null);
+                g2.drawString("x " + gamePanel.keys, 75, 55);
 
-                messageCounter++;
+                //time
+                playTime += (double) 1 / 60;
+                g2.drawString("Time: " + decimalFormat.format(playTime), gamePanel.tileSize * 16, gamePanel.tileSize);
 
-                if(messageCounter > 120){
-                    messageCounter = 0;
-                    messageOn = false;
+                //messages
+                if (messageOn) {
+                    g2.setFont(g2.getFont().deriveFont(30F));
+                    g2.drawString(message, gamePanel.tileSize / 2, gamePanel.tileSize * 3);
+
+                    messageCounter++;
+
+                    if (messageCounter > 120) {
+                        messageCounter = 0;
+                        messageOn = false;
+                    }
                 }
             }
         }
+        if (gamePanel.gameState == gamePanel.pauseState){
+            drawPauseScreen();
+        }
+    }
+
+    public void drawPauseScreen(){
+
+        String text = "PAUSED";
+        int x = getXforCenteredText(text);
+        int y = gamePanel.screenHeight/2;
+
+        g2.drawString(text, x, y);
+    }
+
+    public int getXforCenteredText(String text){
+        int lenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = gamePanel.screenWidth/2 - lenght/2;
+        return x;
     }
 }
