@@ -13,7 +13,15 @@ public class SuperObject {
     public boolean collision = false;
     public int worldX, worldY;
 
-    public void draw(Graphics2D g2, GamePanel gamePanel){
-        
+    public void draw(Graphics2D g2, GamePanel gamePanel) {
+        for (int i = 0; i < gamePanel.obj.length; i++) {
+            if (gamePanel.obj[i] != null) {
+                int worldX = gamePanel.obj[i].worldX;
+                int worldY = gamePanel.obj[i].worldY;
+
+                // Рисуем объект на экране
+                g2.drawImage(gamePanel.obj[i].image, worldX, worldY, gamePanel.tileSize, gamePanel.tileSize, null);
+            }
+        }
     }
 }

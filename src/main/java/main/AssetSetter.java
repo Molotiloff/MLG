@@ -12,12 +12,12 @@ public class AssetSetter {
 
     public void setObject(){
         gamepanel.obj[0] = new Key();
-        gamepanel.obj[0].worldX = 12 * gamepanel.tileSize;
-        gamepanel.obj[0].worldY = 20 * gamepanel.tileSize;
+        gamepanel.obj[0].worldX = 7 * gamepanel.tileSize;
+        gamepanel.obj[0].worldY = 14 * gamepanel.tileSize;
 
         gamepanel.obj[1] = new Key();
-        gamepanel.obj[0].worldX = 38 * gamepanel.tileSize;
-        gamepanel.obj[0].worldY = 2 * gamepanel.tileSize;
+        gamepanel.obj[1].worldX = 15 * gamepanel.tileSize;
+        gamepanel.obj[1].worldY = 2 * gamepanel.tileSize;
     }
 
 }
