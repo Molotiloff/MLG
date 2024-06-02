@@ -14,7 +14,7 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
-    private Image gifImage;
+    private final Image gifImage;
 
     double playTime;
     DecimalFormat decimalFormat = new DecimalFormat("#0.00");
@@ -48,8 +48,21 @@ public class UI {
     public void draw(Graphics2D g2){
 
         if(gameFinished){
+
+            String text;
+            int textLenght;
+            int x;
+            int y;
+
+            text = "Yours time is: " +decimalFormat.format(playTime) + "!";
+            textLenght = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+            x = gamePanel.screenWidth/2 - textLenght/2;
+            y = gamePanel.screenHeight/2 + (gamePanel.tileSize*4);
+            g2.drawString(text, x, y);
+
             System.out.println("finish");
             g2.drawImage(gifImage, gamePanel.tileSize*2,gamePanel.tileSize*3, gamePanel.tileSize, gamePanel.tileSize, null);
+
         }
         else {
             g2.setFont(arial_40);
@@ -59,10 +72,10 @@ public class UI {
 
             //time
             playTime +=(double)1/60;
-            g2.drawString("Time: "+decimalFormat.format(playTime), gamePanel.tileSize*16, gamePanel.tileSize*1 );
+            g2.drawString("Time: "+decimalFormat.format(playTime), gamePanel.tileSize*16, gamePanel.tileSize);
 
             //messages
-            if(messageOn == true){
+            if(messageOn){
                 g2.setFont(g2.getFont().deriveFont(30F));
                 g2.drawString(message, gamePanel.tileSize/2, gamePanel.tileSize*3);
 
