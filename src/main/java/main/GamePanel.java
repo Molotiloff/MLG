@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
     KeyHandler2 keyHandler2 = new KeyHandler2();
     Thread gameTread;
     public CollisionChecker collisionChecker = new CollisionChecker(this);
-    //Objects
+    public AssetSetter assetSetter = new AssetSetter(this);
     Player player = new Player(this, keyHandler);
     Player2 player2 = new Player2(this, keyHandler2);
 
@@ -56,6 +56,10 @@ public class GamePanel extends JPanel implements Runnable{
         this.addKeyListener(keyHandler2);
         this.setFocusable(true);
 
+    }
+
+    public void setupGame() {
+        assetSetter.setObject();
     }
 
     public void startGameThread(){

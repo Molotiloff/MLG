@@ -14,8 +14,6 @@ public class SuperObject {
     public int worldX, worldY;
 
     public void draw(Graphics2D g2, GamePanel gamePanel){
-
-
-
+        
     }
 }
