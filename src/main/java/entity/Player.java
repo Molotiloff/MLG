@@ -111,20 +111,29 @@ public class Player extends Entity{
             switch (objectName) {
                 case "gold key":
                     gamePanel.hasGoldKey++;
+                    gamePanel.keys++;
                     gamePanel.obj[i] = null;
+                    gamePanel.ui.showMessage("You got a gold key!");
                     break;
                 case "green key":
                     gamePanel.hasGreenKey++;
+                    gamePanel.keys++;
                     gamePanel.obj[i] = null;
+                    gamePanel.ui.showMessage("You got a green key!");
                     break;
                 case "purple key":
                     gamePanel.hasPurpleKey++;
+                    gamePanel.keys++;
                     gamePanel.obj[i] = null;
+                    gamePanel.ui.showMessage("You got a purple key!");
                     break;
                 case "gold door":
                     if (gamePanel.hasGoldKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasGoldKey--;
+                    }
+                    else {
+                        gamePanel.ui.showMessage("You need a gold key");
                     }
                     break;
                 case "purple door":
@@ -132,11 +141,17 @@ public class Player extends Entity{
                         gamePanel.obj[i] = null;
                         gamePanel.hasPurpleKey--;
                     }
+                    else {
+                        gamePanel.ui.showMessage("You need a purple key");
+                    }
                     break;
                 case "green door":
                     if (gamePanel.hasGreenKey > 0) {
                         gamePanel.obj[i] = null;
                         gamePanel.hasGreenKey--;
+                    }
+                    else {
+                        gamePanel.ui.showMessage("You need a green key");
                     }
                     break;
             }

@@ -22,6 +22,10 @@ public class Key extends SuperObject{
                     flag = "gold key";
                     image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/objects/gold_key.png")));
                     break;
+                case "keys":
+                    flag = "keys";
+                    image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/objects/keys.png")));
+                    break;
                 default:
                     throw new IllegalArgumentException("Unknown key type: " + objType);
             }

@@ -36,6 +36,7 @@ public class GamePanel extends JPanel implements Runnable{
     Thread gameTread;
     public CollisionChecker collisionChecker = new CollisionChecker(this);
     public AssetSetter assetSetter = new AssetSetter(this);
+    public UI ui = new UI(this);
     Player player = new Player(this, keyHandler);
     Player2 player2 = new Player2(this, keyHandler2);
 
@@ -44,6 +45,7 @@ public class GamePanel extends JPanel implements Runnable{
     public int hasPurpleKey = 0;
     public int hasGreenKey = 0;
     public int hasGoldKey = 0;
+    public int keys = 0;
 
     //States
     public int gameState;
@@ -63,6 +65,8 @@ public class GamePanel extends JPanel implements Runnable{
 
     public void setupGame() {
         assetSetter.setObject();
+
+        gameState = playState;
     }
 
     public void startGameThread(){
@@ -104,8 +108,14 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public void update(){
 
-        player.update();
-        player2.update();
+        if(gameState == playState){
+            player.update();
+            player2.update();
+        }
+        if(gameState == pauseState){
+            //not
+        }
+
     }
     public void paintComponent(Graphics g){
 
@@ -122,6 +132,8 @@ public class GamePanel extends JPanel implements Runnable{
 
         player.draw(g2);
         player2.draw(g2);
+
+        ui.draw(g2);
 
         g2.dispose();
     }
